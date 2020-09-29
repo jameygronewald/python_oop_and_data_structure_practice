@@ -34,7 +34,7 @@ class LinkedList:
 
     def insert_after_node(self, x, data):
         node = self.start
-        print(node.pointer)
+        # print(node.pointer)
         while node is not None:
             if node.data == x:
                 break
@@ -56,7 +56,7 @@ class LinkedList:
             self.start = new_node
             return
         node = self.start
-        print(node.pointer)
+        # print(node.pointer)
         while node.pointer is not None:
             if node.pointer.data == x:
                 break
@@ -95,5 +95,5 @@ linked_list.insert_at_start(0)
 linked_list.insert_before_node(9, 8)
 linked_list.insert_after_node(4, 5)
 linked_list.insert_at_index(3, 2)
-            
-print(linked_list.traverse_list())
+print('traversing...')
+linked_list.traverse_list()
