@@ -7,7 +7,7 @@ class LinkedList:
     def print_list(self):
         current_node = self.start
         if current_node is None:
-            print(f"This list is empty.")
+            print(f"This linked list is empty.")
         index = 0
         while current_node is not None:
             print(f"Index {index}: {current_node.value}")
@@ -101,17 +101,60 @@ class LinkedList:
             count += 1
         return print(f"The list is {count} nodes long.")
 
+    def reverse_list(self):
+        current_node = self.start
+        if current_node is None:
+            print(f"This linked list is empty.")
+            return
+        elif current_node.next is None:
+            self.print_list()
+            return
+        elif current_node.next.next is None:
+            current_node.next.next = current_node
+            self.start = current_node.next
+            current_node.next = None
+            self.print_list()
+            return
+        else:
+            previous_node = current_node
+            current_node = current_node.next
+            next_node = current_node.next
+            previous_node.next = None
+            while next_node is not None:
+                current_node.next = previous_node
+                previous_node = current_node
+                temp = next_node.next
+                next_node.next = current_node
+                current_node = next_node
+                next_node = temp
+            self.start = current_node
+            
+            linked_list.print_list()
+
+
 linked_list = LinkedList()
 print('\n///count///')
 linked_list.count_list()
 print('\n///print///')
 linked_list.print_list()
+print('\n///reverse///')
+linked_list.reverse_list()
 print('\n///prepend///')
 linked_list.prepend_node(10)
+print('\n///reverse///')
+linked_list.reverse_list()
 print('\n///append///')
 linked_list.append_node(12)
+print('\n///print///')
+linked_list.print_list()
+print('\n///reverse///')
+linked_list.reverse_list()
 print('\n///prepend///')
 linked_list.prepend_node(-5)
+print('\n///print///')
+linked_list.print_list()
+print('\n///reverse///')
+linked_list.reverse_list()
 print('\n///insert///')
 linked_list.insert_node(2, 4)
 print('\n///insert///')
@@ -138,3 +181,5 @@ print('\n///count///')
 linked_list.count_list()
 print('\n///print///')
 linked_list.print_list()
+print('\n///reverse list///')
+linked_list.reverse_list()
